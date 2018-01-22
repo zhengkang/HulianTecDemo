@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.code:
-                goUI(this, SendCodeActivity.class);//跳转到验证码
+                goUI(this, SendCodeActivity.class);//跳转到验证码的模块··············
                 break;
             case R.id.imgs:
                 goUI(this, SelectImgsActivity.class);
