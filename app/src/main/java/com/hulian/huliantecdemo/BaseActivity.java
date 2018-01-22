@@ -67,7 +67,7 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
     /**
-     * 返回键
+     * 返回
      * @param view
      */
     public void back(View view){
