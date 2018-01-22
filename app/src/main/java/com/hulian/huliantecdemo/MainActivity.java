@@ -14,6 +14,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
+    //c
     static {
         System.loadLibrary("native-lib");
     }
