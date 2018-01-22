@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hulian.huliantecdemo.login.LoginActivity">
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="假装一个登录的logo"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        app:met_clearButton="true"
+    android:id="@+id/username"
+        android:layout_marginTop="30dp"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="用户名"
+        app:met_baseColor="#0056d3"
+        app:met_errorColor="#ff0000"
+        app:met_minCharacters="6"
+        app:met_maxCharacters="18"
+        app:met_singleLineEllipsis="true"
+android:maxLength="26"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:hint="请输入用户名"
+        android:layout_height="wrap_content" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        app:met_clearButton="true"
+
+        android:id="@+id/password"
+        android:layout_marginTop="20dp"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="密码"
+        app:met_baseColor="#0056d3"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:hint="请输入密码"
+        android:layout_height="wrap_content" />
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码？" />
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册账号？" />
+</RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/loginbtn"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_loginbg"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="登录"
+        android:textColor="#ffffff"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
