@@ -36,6 +36,7 @@ public class ImagePreviewDelActivity extends ImagePreviewBaseActivity implements
         }else{
             mBtnDel.setVisibility(View.VISIBLE);
         }
+
         //mBtnDel.setVisibility(View.VISIBLE);
         topBar.findViewById(R.id.btn_back).setOnClickListener(this);
 
