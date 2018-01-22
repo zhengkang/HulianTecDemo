@@ -31,7 +31,12 @@ public class ImagePreviewDelActivity extends ImagePreviewBaseActivity implements
 
         ImageView mBtnDel = (ImageView) findViewById(R.id.btn_del);
         mBtnDel.setOnClickListener(this);
-        mBtnDel.setVisibility(View.VISIBLE);
+        if(getIntent().getIntExtra("tag",-1)==1){
+            mBtnDel.setVisibility(View.GONE);
+        }else{
+            mBtnDel.setVisibility(View.VISIBLE);
+        }
+        //mBtnDel.setVisibility(View.VISIBLE);
         topBar.findViewById(R.id.btn_back).setOnClickListener(this);
 
         mTitleCount.setText(getString(R.string.ip_preview_image_count, mCurrentPosition + 1, mImageItems.size()));
