@@ -124,7 +124,7 @@ public class SelectImgsActivity extends BaseActivity implements ImagePickerAdapt
 
                 break;
             default:
-                //打开预览
+                //打开预览，如果不删除需要添加tag=1
                 Intent intentPreview = new Intent(this, ImagePreviewDelActivity.class);
                 intentPreview.putExtra(ImagePicker.EXTRA_IMAGE_ITEMS, (ArrayList<ImageItem>) adapter.getImages());
                 intentPreview.putExtra(ImagePicker.EXTRA_SELECTED_IMAGE_POSITION, position);
