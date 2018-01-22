@@ -36,14 +36,14 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public native String stringFromJNI();
+
 
 
     @OnClick({R.id.code, R.id.imgs, R.id.headimg})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.code:
-                goUI(this, SendCodeActivity.class);
+                goUI(this, SendCodeActivity.class);//跳转到验证码
                 break;
             case R.id.imgs:
                 goUI(this, SelectImgsActivity.class);
