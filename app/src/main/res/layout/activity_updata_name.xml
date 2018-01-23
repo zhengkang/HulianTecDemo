@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bj"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:background="@drawable/db"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/t_h">
+        <TextView
+            android:id="@+id/title"
+            android:text=""
+            style="@style/MainTitleStyle"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/fh"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/xt_k"
+            android:background="@drawable/dianniu"
+            android:layout_marginTop="1dp">
+            <EditText
+                android:id="@+id/edittext_bz"
+                android:text=""
+                android:hint=""
+                android:textColorHint="@color/white"
+                android:background="@null"
+                style="@style/MainTitleStyle"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/xt_k" />
+        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_save"
+            android:text="保存"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/dibuqueding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

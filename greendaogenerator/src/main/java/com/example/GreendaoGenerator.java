@@ -28,6 +28,14 @@ public class GreendaoGenerator {
         classbean.addIdProperty();
         classbean.addStringProperty("user_id");
         classbean.addStringProperty("user_name");
+        classbean.addStringProperty("user_bdid");
+        classbean.addStringProperty("user_dw");
+        classbean.addStringProperty("user_bz");
+        classbean.addStringProperty("user_time");
+        classbean.addStringProperty("user_location");
+        classbean.addStringProperty("user_tag");
+        classbean.addStringProperty("user_lat");
+        classbean.addStringProperty("user_lot");
 
         classbean.implementsSerializable();
 

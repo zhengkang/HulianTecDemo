@@ -14,6 +14,14 @@ public class UserEntity implements java.io.Serializable {
     private Long id;
     private String user_id;
     private String user_name;
+    private String user_bdid;
+    private String user_dw;
+    private String user_bz;
+    private String user_time;
+    private String user_location;
+    private String user_tag;
+    private String user_lat;
+    private String user_lot;
 
     @Generated
     public UserEntity() {
@@ -24,10 +32,18 @@ public class UserEntity implements java.io.Serializable {
     }
 
     @Generated
-    public UserEntity(Long id, String user_id, String user_name) {
+    public UserEntity(Long id, String user_id, String user_name, String user_bdid, String user_dw, String user_bz, String user_time, String user_location, String user_tag, String user_lat, String user_lot) {
         this.id = id;
         this.user_id = user_id;
         this.user_name = user_name;
+        this.user_bdid = user_bdid;
+        this.user_dw = user_dw;
+        this.user_bz = user_bz;
+        this.user_time = user_time;
+        this.user_location = user_location;
+        this.user_tag = user_tag;
+        this.user_lat = user_lat;
+        this.user_lot = user_lot;
     }
 
     public Long getId() {
@@ -52,6 +68,70 @@ public class UserEntity implements java.io.Serializable {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getUser_bdid() {
+        return user_bdid;
+    }
+
+    public void setUser_bdid(String user_bdid) {
+        this.user_bdid = user_bdid;
+    }
+
+    public String getUser_dw() {
+        return user_dw;
+    }
+
+    public void setUser_dw(String user_dw) {
+        this.user_dw = user_dw;
+    }
+
+    public String getUser_bz() {
+        return user_bz;
+    }
+
+    public void setUser_bz(String user_bz) {
+        this.user_bz = user_bz;
+    }
+
+    public String getUser_time() {
+        return user_time;
+    }
+
+    public void setUser_time(String user_time) {
+        this.user_time = user_time;
+    }
+
+    public String getUser_location() {
+        return user_location;
+    }
+
+    public void setUser_location(String user_location) {
+        this.user_location = user_location;
+    }
+
+    public String getUser_tag() {
+        return user_tag;
+    }
+
+    public void setUser_tag(String user_tag) {
+        this.user_tag = user_tag;
+    }
+
+    public String getUser_lat() {
+        return user_lat;
+    }
+
+    public void setUser_lat(String user_lat) {
+        this.user_lat = user_lat;
+    }
+
+    public String getUser_lot() {
+        return user_lot;
+    }
+
+    public void setUser_lot(String user_lot) {
+        this.user_lot = user_lot;
     }
 
 }
