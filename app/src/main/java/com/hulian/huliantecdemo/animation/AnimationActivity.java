@@ -7,6 +7,7 @@ import com.hulian.huliantecdemo.R;
 
 /**
  * 动画效果
+ * 都能搜到、一点都不想写
  */
 public class AnimationActivity extends AppCompatActivity {
 
@@ -14,5 +15,7 @@ public class AnimationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
+
+
     }
 }
