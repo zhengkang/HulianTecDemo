@@ -27,6 +27,14 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property User_id = new Property(1, String.class, "user_id", false, "USER_ID");
         public final static Property User_name = new Property(2, String.class, "user_name", false, "USER_NAME");
+        public final static Property User_bdid = new Property(3, String.class, "user_bdid", false, "USER_BDID");
+        public final static Property User_dw = new Property(4, String.class, "user_dw", false, "USER_DW");
+        public final static Property User_bz = new Property(5, String.class, "user_bz", false, "USER_BZ");
+        public final static Property User_time = new Property(6, String.class, "user_time", false, "USER_TIME");
+        public final static Property User_location = new Property(7, String.class, "user_location", false, "USER_LOCATION");
+        public final static Property User_tag = new Property(8, String.class, "user_tag", false, "USER_TAG");
+        public final static Property User_lat = new Property(9, String.class, "user_lat", false, "USER_LAT");
+        public final static Property User_lot = new Property(10, String.class, "user_lot", false, "USER_LOT");
     }
 
 
@@ -44,7 +52,15 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"USER_ENTITY\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"USER_ID\" TEXT," + // 1: user_id
-                "\"USER_NAME\" TEXT);"); // 2: user_name
+                "\"USER_NAME\" TEXT," + // 2: user_name
+                "\"USER_BDID\" TEXT," + // 3: user_bdid
+                "\"USER_DW\" TEXT," + // 4: user_dw
+                "\"USER_BZ\" TEXT," + // 5: user_bz
+                "\"USER_TIME\" TEXT," + // 6: user_time
+                "\"USER_LOCATION\" TEXT," + // 7: user_location
+                "\"USER_TAG\" TEXT," + // 8: user_tag
+                "\"USER_LAT\" TEXT," + // 9: user_lat
+                "\"USER_LOT\" TEXT);"); // 10: user_lot
     }
 
     /** Drops the underlying database table. */
@@ -71,6 +87,46 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         if (user_name != null) {
             stmt.bindString(3, user_name);
         }
+ 
+        String user_bdid = entity.getUser_bdid();
+        if (user_bdid != null) {
+            stmt.bindString(4, user_bdid);
+        }
+ 
+        String user_dw = entity.getUser_dw();
+        if (user_dw != null) {
+            stmt.bindString(5, user_dw);
+        }
+ 
+        String user_bz = entity.getUser_bz();
+        if (user_bz != null) {
+            stmt.bindString(6, user_bz);
+        }
+ 
+        String user_time = entity.getUser_time();
+        if (user_time != null) {
+            stmt.bindString(7, user_time);
+        }
+ 
+        String user_location = entity.getUser_location();
+        if (user_location != null) {
+            stmt.bindString(8, user_location);
+        }
+ 
+        String user_tag = entity.getUser_tag();
+        if (user_tag != null) {
+            stmt.bindString(9, user_tag);
+        }
+ 
+        String user_lat = entity.getUser_lat();
+        if (user_lat != null) {
+            stmt.bindString(10, user_lat);
+        }
+ 
+        String user_lot = entity.getUser_lot();
+        if (user_lot != null) {
+            stmt.bindString(11, user_lot);
+        }
     }
 
     @Override
@@ -91,6 +147,46 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         if (user_name != null) {
             stmt.bindString(3, user_name);
         }
+ 
+        String user_bdid = entity.getUser_bdid();
+        if (user_bdid != null) {
+            stmt.bindString(4, user_bdid);
+        }
+ 
+        String user_dw = entity.getUser_dw();
+        if (user_dw != null) {
+            stmt.bindString(5, user_dw);
+        }
+ 
+        String user_bz = entity.getUser_bz();
+        if (user_bz != null) {
+            stmt.bindString(6, user_bz);
+        }
+ 
+        String user_time = entity.getUser_time();
+        if (user_time != null) {
+            stmt.bindString(7, user_time);
+        }
+ 
+        String user_location = entity.getUser_location();
+        if (user_location != null) {
+            stmt.bindString(8, user_location);
+        }
+ 
+        String user_tag = entity.getUser_tag();
+        if (user_tag != null) {
+            stmt.bindString(9, user_tag);
+        }
+ 
+        String user_lat = entity.getUser_lat();
+        if (user_lat != null) {
+            stmt.bindString(10, user_lat);
+        }
+ 
+        String user_lot = entity.getUser_lot();
+        if (user_lot != null) {
+            stmt.bindString(11, user_lot);
+        }
     }
 
     @Override
@@ -103,7 +199,15 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         UserEntity entity = new UserEntity( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // user_id
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // user_name
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // user_name
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // user_bdid
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // user_dw
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // user_bz
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // user_time
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // user_location
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // user_tag
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // user_lat
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // user_lot
         );
         return entity;
     }
@@ -113,6 +217,14 @@ public class UserEntityDao extends AbstractDao<UserEntity, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUser_id(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setUser_name(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setUser_bdid(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setUser_dw(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setUser_bz(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setUser_time(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setUser_location(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setUser_tag(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setUser_lat(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setUser_lot(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     @Override

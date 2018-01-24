@@ -43,6 +43,26 @@
             android:layout_marginTop="20dp"
             android:layout_width="100dp"
             android:layout_height="50dp"/>
+        <TextView
+            android:id="@+id/database"
+            android:textColor="@color/blue"
+            android:text="数据库"
+            android:background="@color/orange"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:id="@+id/Coordina"
+            android:textColor="@color/blue"
+            android:text="Coordina"
+            android:background="@color/orange"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
     </LinearLayout>
 
 </ScrollView>

@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hulian.huliantecdemo.code.SendCodeActivity;
+import com.hulian.huliantecdemo.database.AddressBookActivity;
+import com.hulian.huliantecdemo.design.CoordinatorLayoutActivity;
 import com.hulian.huliantecdemo.headimg.HeadImgActivity;
 import com.hulian.huliantecdemo.imgs.SelectImgsActivity;
 
@@ -25,6 +27,11 @@ public class MainActivity extends BaseActivity {
     TextView imgs;
     @Bind(R.id.headimg)
     TextView headimg;
+    @Bind(R.id.database)
+    TextView database;
+    @Bind(R.id.Coordina)
+    TextView coordina;
+
 
     @Override
     protected void setContentView() {
@@ -40,7 +47,7 @@ public class MainActivity extends BaseActivity {
 
 
 
-    @OnClick({R.id.code, R.id.imgs, R.id.headimg})
+    @OnClick({R.id.code, R.id.imgs, R.id.headimg,R.id.database,R.id.Coordina})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.code:
@@ -51,6 +58,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.headimg:
                 goUI(this, HeadImgActivity.class);
+                break;
+            case R.id.database:
+                goUI(this, AddressBookActivity.class);
+                break;
+            case R.id.Coordina:
+                goUI(this, CoordinatorLayoutActivity.class);
                 break;
         }
     }
