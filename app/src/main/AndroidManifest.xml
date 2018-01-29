@@ -36,7 +36,9 @@
         <activity android:name=".database.SearchUserActivity" />
         <activity android:name=".database.AddAddressBookActivity" />
         <activity android:name=".database.UpdataNameActivity" />
-        <activity android:name=".design.CoordinatorLayoutActivity"></activity>
+        <activity android:name=".design.CoordinatorLayoutActivity" />
+        <activity android:name=".video.VideoDemoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"></activity>
     </application>
 
 </manifest>
