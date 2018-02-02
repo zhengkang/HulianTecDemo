@@ -1,70 +1,138 @@
 package com.hulian.huliantecdemo;
 
-import android.os.Bundle;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.hulian.huliantecdemo.code.SendCodeActivity;
-import com.hulian.huliantecdemo.database.AddressBookActivity;
-import com.hulian.huliantecdemo.design.CoordinatorLayoutActivity;
-import com.hulian.huliantecdemo.headimg.HeadImgActivity;
-import com.hulian.huliantecdemo.imgs.SelectImgsActivity;
+import com.hulian.huliantecdemo.fragment.HomeFragment;
+import com.hulian.huliantecdemo.view.tablayout.FragmentTabHost;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-    //c
-    static {
-        System.loadLibrary("native-lib");
-    }
+    @Bind(R.id.realcontent)
+    FrameLayout realcontent;
+    @Bind(android.R.id.tabcontent)
+    FrameLayout tabcontent;
+    @Bind(R.id.tabhost)
+    FragmentTabHost tabhost;
 
-    @Bind(R.id.code)
-    TextView code;
-    @Bind(R.id.imgs)
-    TextView imgs;
-    @Bind(R.id.headimg)
-    TextView headimg;
-    @Bind(R.id.database)
-    TextView database;
-    @Bind(R.id.Coordina)
-    TextView coordina;
 
+    /**
+     * 布局填充器
+     */
+    private LayoutInflater mLayoutInflater;
+
+    /**
+     * Fragment数组界面
+     */
+    private Class mFragmentArray[] = {
+            HomeFragment.class,
+            HomeFragment.class,
+            HomeFragment.class,
+            HomeFragment.class
+    };
+    /**
+     * 存放图片数组
+     */
+    private int mImageArray[] = {
+            R.drawable.first,
+            R.drawable.first,
+            R.drawable.first,
+            R.drawable.first
+    };
+
+    /**
+     * 选修卡文字
+     */
+    private int mTextArray[] = {
+            R.string.shouye,
+            R.string.shouye,
+            R.string.shouye,
+            R.string.shouye
+    };
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
     }
 
     @Override
     protected void initData() {
+        ButterKnife.bind(this);
+        initview();
 
+        setListen();
+    }
+
+    private void setListen() {
+
+        tabhost.getTabWidget().getChildTabViewAt(2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabhost.setCurrentTab(2);
+            }
+        });
+        tabhost.getTabWidget().getChildTabViewAt(3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    tabhost.setCurrentTab(3);
+            }
+        });
+        tabhost.getTabWidget().getChildTabViewAt(1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    tabhost.setCurrentTab(1);
+            }
+        });
     }
 
 
+    private void initview() {
+        mLayoutInflater = LayoutInflater.from(this);
+        tabhost.setup(this, getSupportFragmentManager(), R.id.realcontent);
+        // 得到fragment的个数
+        int count = mFragmentArray.length;
+        for (int i = 0; i < count; i++) {
+            // 给每个Tab按钮设置图标、文字和内容
+            TabHost.TabSpec tabSpec = tabhost.newTabSpec(this.getResources().getString(mTextArray[i]))
+                    .setIndicator(getTabItemView(i));
+            // 将Tab按钮添加进Tab选项卡中
+            tabhost.addTab(tabSpec, mFragmentArray[i], null);
+            // 设置Tab按钮的背景
+            tabhost.getTabWidget().getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+            tabhost.getTabWidget().setDividerDrawable(null);
 
-
-    @OnClick({R.id.code, R.id.imgs, R.id.headimg,R.id.database,R.id.Coordina})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.code:
-                goUI(this, SendCodeActivity.class);//跳转到验证码的模块··············
-                break;
-            case R.id.imgs:
-                goUI(this, SelectImgsActivity.class);
-                break;
-            case R.id.headimg:
-                goUI(this, HeadImgActivity.class);
-                break;
-            case R.id.database:
-                goUI(this, AddressBookActivity.class);
-                break;
-            case R.id.Coordina:
-                goUI(this, CoordinatorLayoutActivity.class);
-                break;
         }
     }
+
+    private View getTabItemView(int index) {
+        View view = mLayoutInflater.inflate(R.layout.tabhost_item, null);
+        ImageView imageView = (ImageView) view.findViewById(R.id.item_img);
+        imageView.setImageResource(mImageArray[index]);
+
+        TextView textView = (TextView) view.findViewById(R.id.item_text);
+        textView.setText(mTextArray[index]);
+        return view;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+
+
 }
