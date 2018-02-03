@@ -16,17 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.hulian.searchwifi.R;
-import com.hulian.searchwifi.a.entity.CouponEntity;
-import com.hulian.searchwifi.a.event.MallBus;
-import com.hulian.searchwifi.a.event.MallTypeBus;
-import com.hulian.searchwifi.a.ui.mall.CouponDetailsActivity;
-import com.hulian.searchwifi.a.ui.mall.MyCouponActivity;
-import com.hulian.searchwifi.a.utils.MDUtil;
-import com.hulian.searchwifi.a.utils.MethodName;
-import com.hulian.searchwifi.a.utils.MySP;
-import com.hulian.searchwifi.a.utils.T;
-import com.hulian.searchwifi.b.login.LoginActivity;
+import com.hulian.huliantecdemo.R;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
@@ -83,7 +73,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             holder.icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    CouponDetailsActivity.naveToMain(context,couponEntityArrayList.get(position).getCoupon_id(),couponEntityArrayList.get(position).getCoupon_name(),"1");
+                    //CouponDetailsActivity.naveToMain(context,couponEntityArrayList.get(position).getCoupon_id(),couponEntityArrayList.get(position).getCoupon_name(),"1");
 
                 }
             });
@@ -102,19 +92,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onClick(View view) {
         int pos= (int) view.getTag();
-        if(MySP.getLoginStatus(context)){
-            postMessage(context,couponEntityArrayList.get(pos).getCoupon_id());
-        }else{
-            LoginActivity.GoLoginUI(context);
-        }
-        /*switch (view.getId()){
-            case R.id.icon:
-                CouponDetailsActivity.naveToMain(context,couponEntityArrayList.get(pos).getCoupon_id(),couponEntityArrayList.get(pos).getCoupon_name(),"1");
-                break;
-            case R.id.lijiduihuan:
-                postMessage(context,couponEntityArrayList.get(pos).getCoupon_id());
-                break;
-        }*/
+
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -137,123 +115,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
      * 网络请求
      */
     public void postMessage(final Context context, String id){
-        Map<String, String> params = new HashMap<String, String>();
-        params.put(MethodName.METHOD, MethodName.GETORDER);
-        params.put(MethodName.SIGN, MDUtil.getSign(MethodName.GETORDER));
-        params.put("user_id", MySP.getLoginId(context));
-        params.put("coupon_id", id);
-        MyOkHttp.get().post(context, MDUtil.gethttp(MethodName.GETORDER), params, new JsonResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, JSONObject jsonObject) {
-                Log.e("json", jsonObject.toString());
-                if (jsonObject != null) {
-                    if (jsonObject.optString("code").equals("200")) {
-                        showduihuan2(viewtag,"兑换成功");
-                        EventBus.getDefault().post(new MallTypeBus("1"));
-                        EventBus.getDefault().post(new MallBus("1"));
 
-                    } else {
-                        showduihuan1(viewtag,jsonObject.optString("msg"));
-                    }
-                } else {
-                    T.showShort(context,"json格式错误");
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, String error_msg) {
-                T.showShort(context,"网络连接失败");
-            }
-        });
     }
 
     public void showduihuan2(View v,String str) {
-        View contentView;
-        popupWindow1 = null;
-        if (popupWindow1 == null) {
-            LayoutInflater mLayoutInflater = LayoutInflater.from(context);
-            contentView = mLayoutInflater.inflate(R.layout.duihuachenggong2, null);
-            popupWindow1 = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            TextView negativeButton = (TextView) contentView.findViewById(R.id.negativeButton);
-            TextView negativeButton2 = (TextView) contentView.findViewById(R.id.negativeButton2);
 
-            TextView title=(TextView) contentView.findViewById(R.id.title);
-            title.setText(str);
-            negativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow1.dismiss();
-                }
-            });
-            negativeButton2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow1.dismiss();
-                    Intent intent=new Intent(context, MyCouponActivity.class);
-                    context.startActivity(intent);
-                }
-            });
-        }
-        ColorDrawable cd = new ColorDrawable(0x000000);
-        popupWindow1.setBackgroundDrawable(cd);
-        //产生背景变暗效果
-        WindowManager.LayoutParams lp = ((Activity)context).getWindow().getAttributes();
-        lp.alpha = 0.4f;
-        ((Activity)context).getWindow().setAttributes(lp);
-        popupWindow1.setOutsideTouchable(true);
-        popupWindow1.setFocusable(true);
-        popupWindow1.setAnimationStyle(R.style.AnimBottom);
-        popupWindow1.showAtLocation((View) v.getParent(), Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-        //popupWindow1.update();
-        popupWindow1.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            //在dismiss中恢复透明度
-            public void onDismiss() {
-                WindowManager.LayoutParams lp =((Activity)context).getWindow().getAttributes();
-                lp.alpha = 1f;
-                ((Activity)context).getWindow().setAttributes(lp);
-            }
-        });
     }
 
     public void showduihuan1(View v,String str) {
-        View contentView;
-        popupWindow1 = null;
-        if (popupWindow1 == null) {
-            LayoutInflater mLayoutInflater = LayoutInflater.from(context);
-            contentView = mLayoutInflater.inflate(R.layout.duihuachenggong, null);
-            popupWindow1 = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            TextView negativeButton = (TextView) contentView.findViewById(R.id.negativeButton);
 
-            TextView title=(TextView) contentView.findViewById(R.id.title);
-            title.setText(str);
-            negativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow1.dismiss();
-                }
-            });
-        }
-        ColorDrawable cd = new ColorDrawable(0x000000);
-        popupWindow1.setBackgroundDrawable(cd);
-        //产生背景变暗效果
-        WindowManager.LayoutParams lp = ((Activity)context).getWindow().getAttributes();
-        lp.alpha = 0.4f;
-        ((Activity)context).getWindow().setAttributes(lp);
-        popupWindow1.setOutsideTouchable(true);
-        popupWindow1.setFocusable(true);
-        popupWindow1.setAnimationStyle(R.style.AnimBottom);
-        popupWindow1.showAtLocation((View) v.getParent(), Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-        //popupWindow1.update();
-        popupWindow1.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            //在dismiss中恢复透明度
-            public void onDismiss() {
-                WindowManager.LayoutParams lp =((Activity)context).getWindow().getAttributes();
-                lp.alpha = 1f;
-                ((Activity)context).getWindow().setAttributes(lp);
-            }
-        });
     }
 
 }
